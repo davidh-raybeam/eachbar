@@ -12,7 +12,7 @@ module Enumerable
       opts = {
         starting_at: 0,
         total: nil,
-        format: '%c [%B]'
+        format: '%c [%B] %a'
       }.merge(opts)
     end
     bar = ProgressBar.create(opts)
