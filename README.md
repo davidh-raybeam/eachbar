@@ -1,29 +1,21 @@
-# Eachbar
+# eachbar
 
-TODO: Write a gem description
+A small library wrapping [`ruby-progressbar`](https://github.com/jfelchner/ruby-progressbar), adding an `each_with_progress` method to all enumerable objects that renders a progress bar.
+
+I've found this to be useful primarily when writing one-off scripts.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'eachbar'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install eachbar
+    git clone https://github.com/davidh-raybeam/eachbar.git
+    cd eachbar
+    rake build
+    gem install pkg/eachbar-1.0.0.gem
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ irb -reachbar
+    > [*1..100].each_with_progress { sleep 1 }
 
-## Contributing
+Enumerables that know their own lengths (like `Array`s) will display a percentage and an ETA. Enumerables that do not know their lengths (like `Range`s) will display only elapsed time and the number of items completed.
 
-1. Fork it ( https://github.com/[my-github-username]/eachbar/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+Any options passed to `each_with_progress` will be used to initialize the `ProgressBar`. See [the `ProgressBar` docs](https://github.com/jfelchner/ruby-progressbar/wiki/Options) for more info.
